@@ -86,6 +86,10 @@ export default function Navbar({ page = "normal" }){
                         <a href="/bookmarks" className=" flex items-center text-center w-full">Bookmarks</a>
                         <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
+                    <li className="py-3 px-3 relative flex justify-center text-[#09dbcc] hover:text-white" id="about">
+                        <a href="/about" className=" flex items-center text-center w-full">About</a>
+                        <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
+                    </li>
                     <li className={` py-3 px-3 ${page==="home" ? "block" : "hidden"}`}>
                         <a href="/more" className="text-white flex items-center">
                             <span className="material-symbols-rounded">menu</span>
@@ -124,6 +128,9 @@ export default function Navbar({ page = "normal" }){
                 </li>
                 <li className="py-3 px-3">
                     <a href="/bookmarks" className="text-[#09dbcc] flex items-center">Bookmarks</a>
+                </li>
+                <li className="py-3 px-3">
+                    <a href="/about" className="text-[#09dbcc] flex items-center">About</a>
                 </li>
             </div>
         </div>
