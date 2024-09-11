@@ -1,0 +1,39 @@
+.loader {
+    animation: loader 0.7s alternate ease-in-out infinite;
+}
+
+@keyframes loader {
+    from {
+        left: -10%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+@font-face {
+    font-family: "Richmond";
+    src: url("/Richmond.ttf");
+}
+
+.richmond {
+    font-family: "Richmond";
+}
+
+@font-face {
+    font-family: "LeagueSpartan";
+    src: url("/LeagueSpartan-VariableFont_wght.ttf");
+}
+
+.leagueSpartan {
+    font-family: "LeagueSpartan";
+}
+
+@font-face {
+    font-family: "Maragsa";
+    src: url("/Maragsa-Display.woff");
+}
+
+.maragsa {
+    font-family: "Maragsa";
+}
