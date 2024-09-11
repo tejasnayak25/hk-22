@@ -1,9 +1,18 @@
 import "material-symbols/index.css";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Navbar({ page = "normal" }){
     let [menuState, setMenuState] = useState(false);
+    let router = useRouter();
+    let path = "home";
+    let pname = usePathname();
+    pname = pname.substring(1);
+
+    if(pname !== "") {
+        path = pname;
+    }
 
     useEffect(() => {
         let menuBtn = document.getElementById("menu-btn");
@@ -25,6 +34,18 @@ export default function Navbar({ page = "normal" }){
                 });
             };
         }
+
+        let navMenu = document.getElementById("nav-menu");
+        if(navMenu) {
+            let pelem = navMenu.querySelector(`#${path}`);
+            if(pelem) {
+                pelem.classList.replace("text-[#09dbcc]", "text-white");
+                let pdiv = pelem.querySelector("div");
+                if(pdiv) {
+                    pdiv.style.width = "100%";
+                }
+            }
+        }
     }, []);
     return(
         <div className="flex justify-center w-full md:px-10 px-5">
@@ -45,20 +66,25 @@ export default function Navbar({ page = "normal" }){
                     id="nav-menu"
                 >
                     <ul className="flex gap-5">
-                    <li className="py-3 px-3">
-                        <a href="/" className="text-[#09dbcc] flex items-center">Home</a>
+                    <li className="py-3 px-3 relative flex justify-center text-[#09dbcc] hover:text-white" id="home">
+                        <a href="/" className=" flex items-center text-center w-full">Home</a>
+                        <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
-                    <li className="py-3 px-3">
-                        <a href="/explore" className="text-[#09dbcc] flex items-center">Explore</a>
+                    <li className="py-3 px-3 relative flex justify-center text-[#09dbcc] hover:text-white" id="explore">
+                        <a href="/explore" className=" flex items-center text-center w-full">Explore</a>
+                        <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
-                    <li className="py-3 px-3">
-                        <a href="/search" className="text-[#09dbcc] flex items-center">Search</a>
+                    <li className="py-3 px-3 relative flex justify-center text-[#09dbcc] hover:text-white" id="search">
+                        <a href="/search" className=" flex items-center text-center w-full">Search</a>
+                        <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
-                    <li className="py-3 px-3">
-                        <a href="/blog" className="text-[#09dbcc] flex items-center">Blog</a>
+                    <li className="py-3 px-3 relative flex justify-center text-[#09dbcc] hover:text-white" id="blog">
+                        <a href="/blog" className=" flex items-center text-center w-full">Blog</a>
+                        <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
-                    <li className="py-3 px-3">
-                        <a href="/bookmarks" className="text-[#09dbcc] flex items-center">Bookmarks</a>
+                    <li className="py-3 px-3 relative flex justify-center text-[#09dbcc] hover:text-white" id="bookmarks">
+                        <a href="/bookmarks" className=" flex items-center text-center w-full">Bookmarks</a>
+                        <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
                     <li className={` py-3 px-3 ${page==="home" ? "block" : "hidden"}`}>
                         <a href="/more" className="text-white flex items-center">
@@ -79,6 +105,7 @@ export default function Navbar({ page = "normal" }){
                         width={500}
                         height={500}
                         className=" w-10 aspect-square object-contain"
+                        onClick={()=>{router.push("/account")}}
                     />
                 </div>
             </header>

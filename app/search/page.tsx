@@ -23,7 +23,7 @@ export default function Explore() {
         <>
             <Loader loading={loading}></Loader>
             <div className=" flex justify-center items-center w-full h-full absolute top-0 z-[49]">
-                <div className=" absolute top-0 w-full h-full flex flex-col py-10">
+                <div className=" absolute top-0 w-full h-full flex flex-col gap-5 py-10">
                     <Navbar></Navbar>
                     <div className=" md:px-16 px-8 py-2 w-full flex">
                       <input type="search" name="search" id="search" placeholder="Search" className="placeholder:text-[#00bcae] input flex-shrink-0 flex-1 rounded-s-full input-bordered bg-[#057775]" />
