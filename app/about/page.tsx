@@ -2,7 +2,6 @@
 
 import Loader from "../loader";
 import { useEffect, useState } from "react";
-import * as Heritage from "../heritage_data.json";
 import Navbar from "../navbar";
 import "../style.css";
 import "@iconscout/unicons/css/line.css";
