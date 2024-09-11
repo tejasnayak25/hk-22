@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Loader from "../loader";
 import { useEffect, useState } from "react";
 import * as Heritage from "../heritage_data.json";

@@ -13,7 +13,7 @@ export default function Home() {
         // document.onloadedmetadata = () => {
         setTimeout(() => {
             setLoading(false);
-        }, 0);
+        }, 2000);
         // }
     }, []);
     return (
