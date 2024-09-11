@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-
 export default function Form({ items } : { items: Array<object> }) {
 //   const [inputs, setInputs] = useState({});
 
