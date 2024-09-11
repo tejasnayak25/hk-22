@@ -45,13 +45,13 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="flex justify-center md:items-center items-start flex-1 md:w-1/2 w-full gap-5 p-8">
+                    <div className="flex md:flex-row flex-col justify-center items-center flex-1 md:w-1/2 w-full gap-5 p-8">
                         <div className="w-full md:max-w-md">
                             <div className="h-full border-2 border-[#00bcae] bg-[#003a35] rounded-lg overflow-hidden p-6">
                                 <Form items={[{ type: "input", id: "name", label: "Display Name", placeholder: "John Doe", inp_type: "text" }, { type: "input", id: "email", label: "Email", placeholder: "abc@gmail.com", inp_type: "text" }, { type: "button", label: "Update" }]}></Form>
                             </div>
                         </div>
-                        <div className=" flex flex-col gap-3">
+                        <div className=" flex md:flex-col flex-row gap-3">
                             <button className="btn btn-circle bg-[#005d5b] text-[#00bcae] hover:bg-[#005d5cdd]">
                                 <i className="uil uil-signout text-xl"></i>
                             </button>

@@ -48,7 +48,7 @@ export default function Navbar({ page = "normal" }){
         }
     }, []);
     return(
-        <div className="flex justify-center w-full md:px-10 px-5">
+        <div className="flex justify-center w-full md:px-10 px-5 relative z-50">
             <header className={` ${page === "normal" ? "bg-transparent" : "bg-[#003a35]"} ${page==="home" ? "w-fit" : "w-full"}  rounded-md opacity-[0.77] px-3 flex ${page==="home" ? "justify-center" : "justify-between"}`}>
                 <div className={`${page==="home" ? "hidden" : "flex"} items-center gap-3`}>
                     <Image
