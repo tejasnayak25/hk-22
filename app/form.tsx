@@ -1,4 +1,14 @@
-export default function Form({ items } : { items: Array<object> }) {
+interface Item {
+    type: string;
+    id?: string;
+    label: string;
+    placeholder?: string;
+    href?: string;
+    inp_type?: string;
+}
+
+
+export default function Form({ items } : { items: Array<Item> }) {
 //   const [inputs, setInputs] = useState({});
 
 //   const handleChange = (event) => {

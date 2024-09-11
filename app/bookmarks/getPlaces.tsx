@@ -1,4 +1,12 @@
-export function getPlaces(places: Array<object>) {
+interface Place {
+    id: string;
+    name: string;
+    location: string;
+    image: string; // Optional if image might not exist
+}
+
+
+export function getPlaces(places: Array<Place>) {
     let arr = [];
 
     for (let i = 0; i < places.length; i++) {
