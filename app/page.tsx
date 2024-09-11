@@ -39,9 +39,9 @@ export default function Home() {
         <div className=" absolute top-0 w-full h-full flex flex-col py-10">
             <Navbar page="home"></Navbar>
             <div className=" flex-1 flex flex-col gap-5 justify-center items-center">
-              <p className=" text-9xl richmond text-white">Sanskriti</p>
-              <p className=" text-[2.5rem] maragsa text-white mb-10">Heritage Gallery</p>
-              <a href="/explore" className=' px-28 btn rounded-full bg-[#00bcae] text-white hover:bg-[#00bcafc9]'>Explore</a>
+              <p className=" md:text-9xl text-8xl richmond text-white">Sanskriti</p>
+              <p className=" md:text-[2.5rem] text-3xl maragsa text-white mb-10">Heritage Gallery</p>
+              <a href="/explore" className=' px-28 btn border-0 rounded-full bg-[#00bcae] text-white hover:bg-[#00bcafc9]'>Explore</a>
             </div>
         </div>
       </div>

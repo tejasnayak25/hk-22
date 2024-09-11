@@ -14,7 +14,7 @@ export default function Explore() {
     // document.onloadedmetadata = () => {
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 0);
     // }
   }, []);
     return (

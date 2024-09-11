@@ -37,3 +37,21 @@
 .maragsa {
     font-family: "Maragsa";
 }
+
+.mobile-nav {
+    transform-origin: top center;
+    animation: nav 0.2s ease-in-out;
+}
+
+@keyframes nav {
+    from {
+        transform: scaleY(0);
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    to {
+        transform: scaleY(1);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
