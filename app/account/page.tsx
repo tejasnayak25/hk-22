@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import Form from "../form";
 import "@iconscout/unicons/css/line.css";
 import Navbar from "../navbar";
-import { BADHINTS } from "dns";
 
 export default function Home() {
     let [ loading, setLoading ] = useState(true);
