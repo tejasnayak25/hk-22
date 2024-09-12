@@ -103,14 +103,14 @@ export const loginWithEmail = (email:string, password:string, type:string = "log
                 } else {
                     resolve(null);
                 }
-            }).catch(err => {
+            }).catch(() => {
                 resolve(null);
             });
         } else if(type === "create") {
             createUserWithEmailAndPassword(auth, email, password).then(async userCredential => {
                 let user = userCredential.user;
                 if(user) {
-                    let mail = await sendEmailVerification(user);
+                    await sendEmailVerification(user);
                     alert("Verification email has been sent!");
 
                     if(!user.photoURL) {
@@ -134,7 +134,7 @@ export const loginWithEmail = (email:string, password:string, type:string = "log
                 } else {
                     resolve(null);
                 }
-            }).catch(err => {
+            }).catch(() => {
                 alert("There was some error! Check if account with email already exists!");
                 resolve(null);
             });
