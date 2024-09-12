@@ -90,17 +90,12 @@ export default function Navbar({ page = "normal", user_ref } : { page?: string, 
                         <a href="/about" className=" flex items-center text-center w-full">About</a>
                         <div className="h-0.5 rounded-full absolute bottom-0 bg-white" style={{width: 0}}></div>
                     </li>
-                    <li className={` py-3 px-3 ${page==="home" ? "block" : "hidden"}`}>
-                        <a href="/more" className="text-white flex items-center">
-                            <span className="material-symbols-rounded">menu</span>
-                        </a>
-                    </li>
                     </ul>
                     </div>
                 </nav>
 
                 <div className={`${page==="home" ? "hidden" : "flex"} items-center gap-5`}>
-                    <a id="menu-btn" className="text-white flex items-center">
+                    <a id="menu-btn" className="text-white md:hidden flex items-center">
                         <span className="material-symbols-rounded">{ menuState ? "close" : "menu" }</span>
                     </a>
                     <Image

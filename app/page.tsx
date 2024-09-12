@@ -9,6 +9,7 @@ import Navbar from "./navbar";
 import "./style.css";
 import { loginRequired } from "./fbase-client";
 import { useRouter } from "next/navigation";
+import ChatUI from "./chatbot";
 
 export default function Home() {
   let home_image = Places[Math.floor(Math.random() * Places.length)];
@@ -55,6 +56,7 @@ export default function Home() {
             </div>
         </div>
       </div>
+      <ChatUI></ChatUI>
     </>
   );
 }
