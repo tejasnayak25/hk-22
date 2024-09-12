@@ -21,11 +21,10 @@ export default function Place() {
   }
 
   useEffect(() => {
-    let speechSynthesis = window.speechSynthesis;
-    let voices = speechSynthesis.getVoices();
-    let voice:SpeechSynthesisVoice|undefined = initVoice(speechSynthesis);
-
     const fetchStory = async () => {
+        let speechSynthesis = window.speechSynthesis;
+        let voice:SpeechSynthesisVoice|undefined = initVoice(speechSynthesis);
+
       const response = await fetch(location.origin + "/api/study", {
         method: "POST",
         body: JSON.stringify({
@@ -52,7 +51,7 @@ export default function Place() {
           if(voice) {
             await say(speechSynthesis, voice ,story);
           }
-          await new Promise(resolve => setTimeout(resolve, voice ? 0 : 2000)); // Wait 1 second
+          await new Promise(resolve => setTimeout(resolve, voice ? 0 : 4000)); // Wait 1 second
         }
       } else {
         console.error("Error retrieving story:", data.message || "Unknown error");
@@ -61,8 +60,10 @@ export default function Place() {
       setLoading(false);
     };
 
-    fetchStory();
-  }, [id]); // Ensure fetch runs only on id change
+    if(item) {
+        fetchStory();
+    }
+  }, []); // Ensure fetch runs only on id change
 
   return (
     <>

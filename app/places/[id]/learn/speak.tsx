@@ -1,7 +1,5 @@
 "use client";
 
-
-
 export function initVoice(speechSynthesis:SpeechSynthesis) {
     let voices = speechSynthesis.getVoices();
     let voice = voices.find(item => item.lang === "en-US");
