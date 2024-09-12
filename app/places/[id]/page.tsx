@@ -213,7 +213,7 @@ export default function Place() {
                             <button onClick={() => { router.back(); }} className="btn btn-square btn-ghost text-white">
                                 <i className=" uil uil-angle-left text-4xl"></i>
                             </button>
-                            <p className="leagueSpartan text-white font-semibold text-xl">{item?.name}</p>
+                            <p className="leagueSpartan text-white font-semibold text-xl text-ellipsis max-h-6 overflow-hidden">{item?.name}</p>
                             <div className="flex gap-2">
                                 <button id="bookmark" className="btn btn-square btn-ghost text-white">
                                     <i className={` uis uis-bookmark text-3xl`}></i>

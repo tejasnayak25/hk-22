@@ -27,7 +27,7 @@ export default function Loader({ loading, info = { name: "", image: "" } }: { lo
             />
             <div className=" absolute top-0 w-full h-full bg-[#005d5b] opacity-70"></div>
             <div className=" absolute top-0 w-full h-full flex flex-col gap-10 justify-center items-center">
-                <p className=" maragsa md:text-5xl text-4xl">{info.name}</p>
+                <p className=" maragsa md:text-5xl text-4xl text-center w-full">{info.name}</p>
                 <div className=" md:w-1/3 w-2/3 h-2 rounded-full bg-[#00bcae] relative overflow-hidden">
                     <div className=" h-full w-2/3 bg-[#ebb840] loader absolute"></div>
                 </div>
