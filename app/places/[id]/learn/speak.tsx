@@ -7,7 +7,7 @@ export function initVoice(speechSynthesis:SpeechSynthesis) {
 }
 
 export function say(speechSynthesis: SpeechSynthesis, voice:SpeechSynthesisVoice, text:string) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let utterance = new SpeechSynthesisUtterance(text);
         utterance.voice = voice;
         utterance.onend = () => {

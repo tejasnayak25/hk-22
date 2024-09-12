@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendEmailVerification, createUserWithEmailAndPassword, sendPasswordResetEmail, User, updateProfile, deleteUser } from "firebase/auth";
-import { getFirestore, getDoc, doc, updateDoc, Firestore, FieldValue, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getFirestore, getDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { deleteObject, getDownloadURL, getStorage, listAll, ref, uploadBytes } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,7 +20,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
 const _auth = getAuth();
@@ -28,7 +28,7 @@ const storage = getStorage();
 const firestore = getFirestore();
 
 function _loginRequired(router: any, redirect: boolean = true):Promise<User | null> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         _auth.onAuthStateChanged((user) => {
             if(!user) {
                 if(redirect) {
@@ -46,7 +46,7 @@ function _loginRequired(router: any, redirect: boolean = true):Promise<User | nu
 export const auth = _auth;
 export const loginRequired = _loginRequired;
 export const loginWithGoogle = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let provider = new GoogleAuthProvider();
 
         signInWithPopup(auth, provider).then(userCredential => {
@@ -63,7 +63,7 @@ export const loginWithGoogle = () => {
 }
 
 function uploadPFP(user: User, photo: any):Promise<string|null> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let picName:any = photo.name || "";
         if(picName) {
             picName = picName.split(".");
@@ -93,7 +93,7 @@ function uploadPFP(user: User, photo: any):Promise<string|null> {
 }
 
 export const loginWithEmail = (email:string, password:string, type:string = "login", router:any = null) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         if(type === "login") {
             signInWithEmailAndPassword(auth, email, password).then(userCredential => {
                 let user = userCredential.user;
@@ -142,14 +142,15 @@ export const loginWithEmail = (email:string, password:string, type:string = "log
 }
 
 export const resetPasswordEmail = (email: string) => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
         await sendPasswordResetEmail(auth, email);
         alert("Password Reset Email has been sent!");
+        resolve(null);
     });
 }
 
 export const deleteAccount = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let user = auth.currentUser;
         if(user) {
             const storageRef = ref(storage, "/hackotsava-2k24/users/" + user.uid + '/profilePicture');
@@ -199,7 +200,7 @@ export const updatePf = async (displayName: string, photo: any, type:string = "b
 }
 
 export const checkUserBookmark = (id: string) : Promise<boolean> => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let user = auth.currentUser;
         if(user && user.email) {
             let ref = doc(firestore, "hackotsava-2k24", "storage", "users", user.email);
@@ -226,7 +227,7 @@ export const checkUserBookmark = (id: string) : Promise<boolean> => {
 }
 
 export const updateBookmark = (id: string, data: boolean) : Promise<boolean> => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let user = auth.currentUser;
         if(user && user.email) {
             let ref = doc(firestore, "hackotsava-2k24", "storage", "users", user.email);
@@ -242,7 +243,7 @@ export const updateBookmark = (id: string, data: boolean) : Promise<boolean> => 
 }
 
 export const fetchBookmarks = () : Promise<Array<string>> => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let user = auth.currentUser;
         if(user && user.email) {
             let ref = doc(firestore, "hackotsava-2k24", "storage", "users", user.email);
