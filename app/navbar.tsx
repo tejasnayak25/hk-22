@@ -58,7 +58,7 @@ export default function Navbar({ page = "normal" }){
                         height={500}
                         className=" w-10 aspect-square object-contain"
                     />
-                    <p className=" font-semibold leagueSpartan text-xl">Sanskriti</p>
+                    <p className=" font-semibold leagueSpartan text-xl text-white">Sanskriti</p>
                 </div>
                 <nav className=" md:block hidden">
                 <div

@@ -7,14 +7,18 @@ import { useEffect, useState } from "react";
 import * as Places from "./places.json";
 import Navbar from "./navbar";
 import "./style.css";
+import { loginRequired } from "./fbase-client";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   let home_image = Places[Math.floor(Math.random() * Places.length)];
+  let router = useRouter();
   
   let [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
     // document.onloadedmetadata = () => {
+      loginRequired(router);
       setTimeout(() => {
         setLoading(false);
       }, 2000);

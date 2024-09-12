@@ -45,10 +45,10 @@ export default function Place() {
                     </div>
                     <div className=" absolute top-0 w-full h-full pt-10 md:px-32 px-5">
                         <div className="bg-black rounded-md bg-opacity-50 flex justify-between items-center">
-                            <button className="btn btn-square btn-ghost text-white">
+                            <button onClick={() => { router.back(); }} className="btn btn-square btn-ghost text-white">
                                 <i className=" uil uil-angle-left text-4xl"></i>
                             </button>
-                            <p className="leagueSpartan font-semibold text-xl">{item?.name}</p>
+                            <p className="leagueSpartan text-white font-semibold text-xl">{item?.name}</p>
                             <button className="btn btn-square btn-ghost text-white">
                                 <i className=" uil uil-volume text-3xl"></i>
                             </button>

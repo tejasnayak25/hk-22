@@ -14,7 +14,7 @@ export default function Loader({ loading, info = { name: "", image: "" } }: { lo
         }
     }, [loading]);
     return (
-        <div id="loading-window" className={`${loading ? "flex" : "hidden"} justify-center items-center w-full h-full absolute top-0 z-50`}>
+        <div id="loading-window" className={`${loading ? "flex" : "hidden"} justify-center items-center w-full h-full fixed top-0 z-50`}>
             <Image
                 src={info.image}
                 alt="Loader"
