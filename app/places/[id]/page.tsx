@@ -8,6 +8,7 @@ import Image from "next/image";
 import "@iconscout/unicons/css/line.css";
 import "@iconscout/unicons/css/solid.css";
 import "material-symbols/index.css";
+import { checkUserBookmark, updateBookmark } from "../../fbase-client";
 
 export default function Place() {
     let { id } = useParams();
@@ -34,6 +35,39 @@ export default function Place() {
                     title: item?.name
                 });
             }
+        }
+
+        if(item) {
+            let bookmarked:Promise<boolean> = checkUserBookmark(item.id);
+
+            bookmarked.then(data => {
+                let bkbtn = document.getElementById("bookmark");
+                if(bkbtn) {
+                    let bkicon = bkbtn.querySelector("i");
+
+                    if(bkicon) {
+                        if(data) {
+                            bkicon.classList.replace("uil", "uis");
+                            bkicon.classList.replace("uil-bookmark", "uis-bookmark");
+                        } else {
+                            bkicon.classList.replace("uis", "uil");
+                            bkicon.classList.replace("uis-bookmark", "uil-bookmark");
+                        }
+
+                        bkbtn.onclick = () => {
+                            if(data) {
+                                bkicon.classList.replace("uis", "uil");
+                                bkicon.classList.replace("uis-bookmark", "uil-bookmark");
+                            } else {
+                                bkicon.classList.replace("uil", "uis");
+                                bkicon.classList.replace("uil-bookmark", "uis-bookmark");
+                            }
+                            data = !data;
+                            updateBookmark(item.id, data);
+                        }
+                    }
+                }
+            })
         }
         // }
     }, []);
@@ -181,8 +215,8 @@ export default function Place() {
                             </button>
                             <p className="leagueSpartan text-white font-semibold text-xl">{item?.name}</p>
                             <div className="flex gap-2">
-                                <button className="btn btn-square btn-ghost text-white">
-                                    <i className=" uis uis-bookmark text-3xl"></i>
+                                <button id="bookmark" className="btn btn-square btn-ghost text-white">
+                                    <i className={` uis uis-bookmark text-3xl`}></i>
                                 </button>
                                 <button id="share-btn" className="btn btn-square btn-ghost text-white">
                                     <i className=" uil uil-share text-3xl"></i>

@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import Loader from "../loader";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Form from "../form";
 import "@iconscout/unicons/css/line.css";
+import { useRouter } from "next/navigation";
+import { resetPasswordEmail } from "../fbase-client";
 
 export default function Home() {
     let [ loading, setLoading ] = useState(true);
+
+    let emailRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         // document.onloadedmetadata = () => {
@@ -30,7 +34,13 @@ export default function Home() {
                 <div className="flex justify-center md:items-center items-start flex-1 md:w-1/2 w-full p-8">
                     <div className="w-full md:max-w-md h-fit">
                         <div className="h-full border-2 border-[#00bcae] bg-[#003a35] rounded-lg overflow-hidden p-6">
-                            <Form items={[{ type: "input", id: "email", label: "Email", placeholder: "abc@gmail.com", inp_type: "text" }, { type: "button", label: "Send Mail" }]}></Form>
+                            <Form items={[{ type: "input", id: "email", label: "Email", ref: emailRef, placeholder: "abc@gmail.com", inp_type: "text" }, { type: "button", label: "Send Mail", onClick: () => {
+                                if(emailRef.current) {
+                                    let email = emailRef.current.value;
+
+                                    resetPasswordEmail(email);
+                                }
+                            } }]}></Form>
                         </div>
                     </div>
                 </div>

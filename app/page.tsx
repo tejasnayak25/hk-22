@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Loader from "./loader";
 import TitleBar from "./title";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as Places from "./places.json";
 import Navbar from "./navbar";
 import "./style.css";
@@ -13,12 +13,18 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   let home_image = Places[Math.floor(Math.random() * Places.length)];
   let router = useRouter();
+  let userRef = useRef<HTMLImageElement>(null);
   
   let [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
     // document.onloadedmetadata = () => {
-      loginRequired(router);
+      let userQuery = loginRequired(router);
+      // userQuery.then(user => {
+      //   if(user) {
+
+      //   }
+      // });
       setTimeout(() => {
         setLoading(false);
       }, 2000);
@@ -41,7 +47,7 @@ export default function Home() {
           <div className=" absolute top-0 w-full h-full from-transparent to-[#142a31] bg-gradient-to-b"></div>
         </div>
         <div className=" absolute top-0 w-full h-full flex flex-col py-10">
-            <Navbar page="home"></Navbar>
+            <Navbar user_ref={userRef} page="home"></Navbar>
             <div className=" flex-1 flex flex-col gap-5 justify-center items-center">
               <p className=" md:text-9xl text-8xl richmond text-white">Sanskriti</p>
               <p className=" md:text-[2.5rem] text-3xl maragsa text-white mb-10">Heritage Gallery</p>

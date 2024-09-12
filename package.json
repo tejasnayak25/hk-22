@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.18.0",
     "@iconscout/unicons": "^4.0.8",
     "daisyui": "^4.12.10",
     "firebase": "^10.13.1",

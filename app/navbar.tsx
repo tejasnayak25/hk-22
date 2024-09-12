@@ -1,9 +1,9 @@
 import "material-symbols/index.css";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 
-export default function Navbar({ page = "normal" }){
+export default function Navbar({ page = "normal", user_ref } : { page?: string, user_ref: RefObject<HTMLImageElement> }){
     let [menuState, setMenuState] = useState(false);
     let router = useRouter();
     let path = "home";
@@ -104,11 +104,12 @@ export default function Navbar({ page = "normal" }){
                         <span className="material-symbols-rounded">{ menuState ? "close" : "menu" }</span>
                     </a>
                     <Image
+                        ref={user_ref}
                         src={"/user.svg"}
                         alt="Placeholder"
                         width={500}
                         height={500}
-                        className=" w-10 aspect-square object-contain"
+                        className=" w-10 aspect-square object-contain rounded-full"
                         onClick={()=>{router.push("/account")}}
                     />
                 </div>

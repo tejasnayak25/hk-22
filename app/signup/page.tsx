@@ -2,15 +2,29 @@
 
 import Image from "next/image";
 import Loader from "../loader";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Form from "../form";
 import "@iconscout/unicons/css/line.css";
+import { loginRequired, loginWithEmail, loginWithGoogle } from "../fbase-client";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
     let [ loading, setLoading ] = useState(true);
+    let router = useRouter();
+
+    let emailRef = useRef<HTMLInputElement>(null);
+    let passwordRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
+
+        let useRef = loginRequired(router, false);
+        useRef.then(user => {
+            if(user) {
+                router.push("/");
+            }
+        });
         // document.onloadedmetadata = () => {
+        
         setTimeout(() => {
             setLoading(false);
         }, 2000);
@@ -30,9 +44,27 @@ export default function Home() {
                 <div className="flex justify-center md:items-center items-start flex-1 md:w-1/2 w-full p-8">
                     <div className="w-full md:max-w-md h-fit">
                         <div className="h-full border-2 border-[#00bcae] bg-[#003a35] rounded-lg overflow-hidden p-6">
-                            <Form items={[{ type: "input", id: "email", label: "Email", placeholder: "abc@gmail.com", inp_type: "text" }, { type: "input", id: "password", label: "Password", placeholder: "secret", inp_type: "password" }, { type: "button", label: "Sign Up" }]}></Form>
+                            <Form items={[{ type: "input", id: "email", label: "Email", ref: emailRef, placeholder: "abc@gmail.com", inp_type: "text" }, { type: "input", id: "password", label: "Password", ref: passwordRef, placeholder: "secret", inp_type: "password" }, { type: "button", label: "Sign Up", 
+                                onClick: async () => {
+                                    if(emailRef.current && passwordRef.current) {
+                                        let email = emailRef.current.value, password = passwordRef.current.value;
+                                        if(email === "" || password === "") {
+                                            return;
+                                        }
+                                        let user = await loginWithEmail(email, password, "create", router);
+                                        if(user) {
+                                            router.push("/");
+                                        }
+                                    }
+                                }
+                             }]}></Form>
                             <div className="relative mb-4 flex flex-col z-10">
-                                <button className=' w-full btn rounded-full bg-[#0d6968] text-[#00bcae] hover:bg-[#0d6968c7] relative'>
+                                <button onClick={async () => {
+                                    let user = await loginWithGoogle();
+                                    if(user) {
+                                        router.push("/");
+                                    }
+                                }} className=' w-full btn rounded-full bg-[#0d6968] text-[#00bcae] hover:bg-[#0d6968c7] relative'>
                                     <div className=" absolute h-full aspect-square left-0 rounded-full flex justify-center items-center bg-[#005d5b]">
                                         <Image
                                             src={"/google-color.svg"}
