@@ -89,7 +89,7 @@ export default function Place() {
                     <div className=" md:py-10 py-5 md:px-20 px-5 min-h-32 flex flex-wrap gap-8">
                         <div className=" md:flex-1 flex-auto h-full">
                             <div className="mb-8 p-3 px-4 rounded-md bg-[#057775] text-white w-fit">{item?.location}</div>
-                            <div className="w-full text-xl mb-3 font-bold leagueSpartan text-white">{item?.title}</div>
+                            <div className="w-full text-3xl mb-3 font-bold leagueSpartan text-white">{item?.title}</div>
                             <div className=" w-full text-gray-400 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore totam aliquam quidem veritatis error sunt a autem dolor omnis porro maxime inventore cumque sapiente dolorem ullam quibusdam, enim voluptate? Voluptates.</div>
                         </div>
                         <div className=" flex flex-col justify-center items-center i-code gap-3 md:w-1/3 w-full h-full px-10">
