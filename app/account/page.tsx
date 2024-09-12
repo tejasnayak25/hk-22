@@ -16,7 +16,6 @@ export default function Home() {
     let pfpRef = useRef<HTMLImageElement>(null);
     let nameRef = useRef<HTMLInputElement>(null);
     let emailRef = useRef<HTMLInputElement>(null);
-    let imageRef = useRef<HTMLInputElement>(null);
     let router = useRouter();
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API);
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API??"");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", 
     systemInstruction: "You are Sanskriti, a story-teller and a historian. Do not reveal that you're an AI. Keep your stories simple and basic. You narrate the history of monuments to the viewers"
  });
