@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,6 +30,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#142a31] h-dvh`}
       >
         {children}
+        <Script src="/mespeak/mespeak.js"></Script>
+        <Script src="/speak.js"></Script>
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API??"");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", 
-    systemInstruction: "You are Sanskriti, a story-teller and a historian. Do not reveal that you're an AI. Keep your stories simple and basic. You narrate the history of monuments to the viewers"
+    systemInstruction: "You are Sanskriti, a story-teller and a historian. Keep your stories simple and basic. You narrate the history of monuments to the viewers"
  });
 
 async function generate(prompt: string) {
@@ -12,6 +12,7 @@ async function generate(prompt: string) {
         let text = result.response.text();
         return text;
     } catch (e) {
+        console.log(e);
         return null;
     }
 }

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Heritage from "../../../heritage_data.json";
 import Image from "next/image";
 import "@iconscout/unicons/css/line.css";
-import { initVoice, say } from "./speak";
+// import { initVoice, say } from "./speak";
 
 export default function Place() {
   const { id } = useParams();
@@ -22,8 +22,7 @@ export default function Place() {
 
   useEffect(() => {
     const fetchStory = async () => {
-        let speechSynthesis = window.speechSynthesis;
-        let voice:SpeechSynthesisVoice|undefined = initVoice(speechSynthesis);
+        let voice = "";
 
       const response = await fetch(location.origin + "/api/study", {
         method: "POST",
@@ -31,6 +30,7 @@ export default function Place() {
           prompt: `Tell me about ${item?.name} in a story format`
         })
       });
+
 
       if (!response.ok) {
         console.error("Error fetching story:", response.statusText);
@@ -48,9 +48,9 @@ export default function Place() {
             // ... your logic to create the new story lines
             return storyLines[i]; // Assuming newStoryLines is an array of strings
           });
-          if(voice) {
-            await say(speechSynthesis, voice ,story);
-          }
+        //   if(voice) {
+        //     await say(speechSynthesis, voice ,story);
+        //   }
           await new Promise(resolve => setTimeout(resolve, voice ? 0 : 4000)); // Wait 1 second
         }
       } else {
@@ -63,6 +63,10 @@ export default function Place() {
     if(item) {
         fetchStory();
     }
+
+    setTimeout(() => {
+        setLoading(false);
+    }, 2000);
   }, []); // Ensure fetch runs only on id change
 
   return (
