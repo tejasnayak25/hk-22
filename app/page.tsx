@@ -27,7 +27,8 @@ export default function Home() {
             textWrapper.innerHTML = textWrapper.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
         }
         textWrapper?.classList.replace("opacity-0", "opacity-70");
-        anime({
+
+        window.anime({
             targets: '#loader-title .letter',
             opacity: [0,1],
             easing: "easeInOutQuad",
