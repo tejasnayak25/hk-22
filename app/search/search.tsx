@@ -48,7 +48,7 @@ export const searchPlace = (heritage: Array<Place>, name: string):Array<Place> =
     // Convert sorted array back into an object
     const sortedObj = Object.fromEntries(sortedArray);
 
-    let finalObj:any = [];
+    let finalObj:Array<Place> = [];
 
     Object.keys(sortedObj).forEach((key, index) => {
         let item = Object.values(heritage).find(i => i.id === key);
@@ -57,6 +57,5 @@ export const searchPlace = (heritage: Array<Place>, name: string):Array<Place> =
         }
     });
 
-    console.log(finalObj);
     return finalObj;
 }

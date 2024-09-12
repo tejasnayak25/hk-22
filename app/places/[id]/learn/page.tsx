@@ -44,7 +44,7 @@ export default function Place() {
 
         // Efficiently update story state line by line with a loop
         for (let i = 0; i < storyLines.length; i++) {
-          setStory(prevStory => {
+          setStory(() => {
             // ... your logic to create the new story lines
             return storyLines[i]; // Assuming newStoryLines is an array of strings
           });
