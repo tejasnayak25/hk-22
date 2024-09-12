@@ -9,6 +9,7 @@ import "./style.css";
 import { loginRequired } from "./fbase-client";
 import { useRouter } from "next/navigation";
 import ChatUI from "./chatbot";
+import anime from "./anime.min";
 
 export default function Home() {
   let home_image = Places[Math.floor(Math.random() * Places.length)];
@@ -28,7 +29,7 @@ export default function Home() {
         }
         textWrapper?.classList.replace("opacity-0", "opacity-70");
 
-        window.anime({
+        anime({
             targets: '#loader-title .letter',
             opacity: [0,1],
             easing: "easeInOutQuad",
