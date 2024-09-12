@@ -53,6 +53,7 @@ export default function Place() {
         //   }
           await new Promise(resolve => setTimeout(resolve, voice ? 0 : 4000)); // Wait 1 second
         }
+        setStory("The End");
       } else {
         console.error("Error retrieving story:", data.message || "Unknown error");
       }
