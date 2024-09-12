@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendEmailVerification, createUserWithEmailAndPassword, sendPasswordResetEmail, User, updateProfile, deleteUser } from "firebase/auth";
 import { getFirestore, getDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { deleteObject, getDownloadURL, getStorage, listAll, ref, uploadBytes } from "firebase/storage";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,7 +28,7 @@ const _auth = getAuth();
 const storage = getStorage();
 const firestore = getFirestore();
 
-function _loginRequired(router: any, redirect: boolean = true):Promise<User | null> {
+function _loginRequired(router: AppRouterInstance, redirect: boolean = true):Promise<User | null> {
     return new Promise((resolve) => {
         _auth.onAuthStateChanged((user) => {
             if(!user) {
@@ -56,7 +57,7 @@ export const loginWithGoogle = () => {
             } else {
                 resolve(null);
             }
-        }).catch(err => {
+        }).catch(() => {
             resolve(null);
         });
     });

@@ -1,8 +1,10 @@
+import { RefObject } from "react";
+
 interface Item {
     type: string;
     id?: string;
     label: string;
-    ref?: any;
+    ref?: RefObject<HTMLInputElement>;
     placeholder?: string;
     href?: string;
     inp_type?: string;

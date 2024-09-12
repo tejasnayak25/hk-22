@@ -18,7 +18,7 @@ export default function Explore() {
     let userRef = useRef<HTMLImageElement>(null);
     let router = useRouter();
     let params = useSearchParams();
-    let query:any = "";
+    let query:string|null = "";
 
     if(params.has("q")) {
       query = params.get("q");
@@ -56,7 +56,7 @@ export default function Explore() {
                       </button>
                     </div>
                     <div className=" flex-1 grid gap-5 md:grid-cols-3 grid-cols-1 md:p-10 p-5 overflow-y-auto">
-                        {getPlaces(searchPlace(Heritage, query))}
+                        {getPlaces(searchPlace(Heritage, query??""))}
                     </div>
                 </div>
             </div>

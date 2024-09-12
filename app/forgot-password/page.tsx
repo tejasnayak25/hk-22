@@ -5,7 +5,6 @@ import Loader from "../loader";
 import { useEffect, useRef, useState } from "react";
 import Form from "../form";
 import "@iconscout/unicons/css/line.css";
-import { useRouter } from "next/navigation";
 import { resetPasswordEmail } from "../fbase-client";
 
 export default function Home() {
