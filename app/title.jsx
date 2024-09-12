@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function TitleBar() {
     return (
-        <div className=" hidden justify-center items-center w-full h-full absolute top-0 z-[49]">
+        <div id="title-win" className=" hidden justify-center items-center w-full h-full absolute top-0 z-[50]">
             <Image
                 src={"/title-page-bg.png"}
                 alt="Title BG"

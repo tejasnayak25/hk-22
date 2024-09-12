@@ -9,6 +9,7 @@ import Navbar from "../navbar";
 import { auth, deleteAccount, loginRequired, updatePf } from "../fbase-client";
 import { useRouter } from "next/navigation";
 import { User } from "firebase/auth";
+import ChatUI from "../chatbot";
 
 export default function Home() {
     let [ loading, setLoading ] = useState(true);
@@ -53,7 +54,7 @@ export default function Home() {
                     <div className=" flex md:flex-row flex-col md:w-1/2 w-full md:justify-center justify-normal">
                         <div className="md:mt-10 mt-0 flex flex-col gap-3 justify-center items-center md:h-full h-fit md:w-1/2 w-full md:p-0 p-10 pb-4">
                             <p className=" md:text-4xl text-3xl font-bold leagueSpartan text-white">Account</p>
-                            <a className="md:text-2xl text-lg text-gray-400 hover:underline" href="/signup">View My Posts</a>
+                            <a className="md:text-2xl text-lg text-gray-400 hover:underline" href="/account">View My Posts</a>
 
                             {/* <a className="text-2xl text-gray-400 hover:underline" href="/forgot-password">Forgot password?</a> */}
                         </div>
@@ -127,13 +128,6 @@ export default function Home() {
                             <button onClick={() => { router.push("/forgot-password") }} className="btn border-0 btn-circle bg-[#005d5b] text-[#00bcae] hover:bg-[#005d5cdd]">
                                 <i className="uil uil-key-skeleton text-xl"></i>
                             </button>
-                            <Image
-                                src={"/chatbot.png"}
-                                className="w-12 aspect-square cursor-pointer"
-                                alt="Chat Bot"
-                                width={500}
-                                height={500}
-                            />
                             <button onClick={async () => {
                                 if(confirm("Are you sure you want to delete your account?")) {
                                     await deleteAccount();
@@ -156,6 +150,7 @@ export default function Home() {
                 height={"500"}
             />
         </div>
+        <ChatUI></ChatUI>
         </>
     );
 }

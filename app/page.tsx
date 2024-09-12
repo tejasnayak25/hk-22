@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Loader from "./loader";
-import TitleBar from "./title";
 import { useEffect, useRef, useState } from "react";
 import * as Places from "./places.json";
 import Navbar from "./navbar";
@@ -19,22 +18,27 @@ export default function Home() {
   let [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
-    // document.onloadedmetadata = () => {
       loginRequired(router);
-      // userQuery.then(user => {
-      //   if(user) {
-
-      //   }
-      // });
       setTimeout(() => {
         setLoading(false);
+
+        var textWrapper = document.querySelector('#loader-title');
+        if(textWrapper) {
+            textWrapper.innerHTML = textWrapper.textContent?.replace(/\S/g, "<span class='letter'>$&</span>") ?? "";
+        }
+        textWrapper?.classList.replace("opacity-0", "opacity-70");
+        anime({
+            targets: '#loader-title .letter',
+            opacity: [0,1],
+            easing: "easeInOutQuad",
+            duration: 1000,
+            delay: (el:HTMLElement, i:number) => 150 * (i+1)
+        });
       }, 2000);
-    // }
   }, []);
   return (
     <>
       <Loader loading={loading}></Loader>
-      <TitleBar></TitleBar>
       <div className=" flex justify-center items-center w-full h-full absolute top-0 z-[49]">
         <div className=" relative w-full h-full">
           <Image
@@ -50,7 +54,7 @@ export default function Home() {
         <div className=" absolute top-0 w-full h-full flex flex-col py-10">
             <Navbar user_ref={userRef} page="home"></Navbar>
             <div className=" flex-1 flex flex-col gap-5 justify-center items-center">
-              <p className=" md:text-9xl text-8xl richmond text-white">Sanskriti</p>
+              <p id="loader-title" className=" md:text-9xl text-8xl richmond text-white">Sanskriti</p>
               <p className=" md:text-[2.5rem] text-3xl maragsa text-white mb-10">Heritage Gallery</p>
               <a href="/explore" className=' px-28 btn border-0 rounded-full bg-[#00bcae] text-white hover:bg-[#00bcafc9]'>Explore</a>
             </div>
