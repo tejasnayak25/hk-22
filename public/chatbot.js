@@ -46,7 +46,7 @@ function addUserMessage(message) {
     messageElement.innerHTML = `<p class="bg-[#09dbcc] text-black rounded-lg py-2 px-4 inline-block">${message}</p>`;
     chatbox.appendChild(messageElement);
     chatbox.scrollTop = chatbox.scrollHeight;
-    messages.append(`User: ${message}`);
+    messages.push(`User: ${message}`);
 }
 
 function addBotMessage(message) {
@@ -55,7 +55,7 @@ function addBotMessage(message) {
     messageElement.innerHTML = `<p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">${message}</p>`;
     chatbox.appendChild(messageElement);
     chatbox.scrollTop = chatbox.scrollHeight;
-    messages.append(`You: ${message}`);
+    messages.push(`You: ${message}`);
 }
 
 function respondToUser(userMessage) {
