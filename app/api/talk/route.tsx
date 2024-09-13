@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API??"");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", 
-    systemInstruction: "You are a historian and an assistant who will solve any user queries regarding to Indian heritage. Don't answer anything else. Keep your responses short and reader-friendly."
+    systemInstruction: "You are a historian and an assistant who will solve any user queries regarding to Indian heritage. Don't answer anything else."
  });
 
 async function generate(prompt: string) {

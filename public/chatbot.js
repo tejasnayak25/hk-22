@@ -38,12 +38,15 @@ userInput.addEventListener("keyup", function (event) {
     }
 });
 
+let messages = [];
+
 function addUserMessage(message) {
     const messageElement = document.createElement("div");
     messageElement.classList.add("mb-2", "text-right");
     messageElement.innerHTML = `<p class="bg-[#09dbcc] text-black rounded-lg py-2 px-4 inline-block">${message}</p>`;
     chatbox.appendChild(messageElement);
     chatbox.scrollTop = chatbox.scrollHeight;
+    messages.append(`User: ${message}`);
 }
 
 function addBotMessage(message) {
@@ -52,6 +55,7 @@ function addBotMessage(message) {
     messageElement.innerHTML = `<p class="bg-gray-200 text-gray-700 rounded-lg py-2 px-4 inline-block">${message}</p>`;
     chatbox.appendChild(messageElement);
     chatbox.scrollTop = chatbox.scrollHeight;
+    messages.append(`You: ${message}`);
 }
 
 function respondToUser(userMessage) {
@@ -59,7 +63,7 @@ function respondToUser(userMessage) {
     fetch("/api/talk", {
         method: "POST",
         body: JSON.stringify({
-            prompt: userMessage
+            prompt: `History ${JSON.stringify(messages)}. ${userMessage}`
         })
     }).then((res)=>res.json()).then((res)=>{
         if(res.status === 200) {
