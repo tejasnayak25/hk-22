@@ -14,7 +14,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDIQKNaRwnsxlCSZBACO1K7QRwSRlRjFwE",
   authDomain: "varnotsava-405511.firebaseapp.com",
   projectId: "varnotsava-405511",
-  storageBucket: "varnotsava-405511.appspot.com",
+  storageBucket: "varnotsava-405511.firebasestorage.app",
   messagingSenderId: "808606184188",
   appId: "1:808606184188:web:b0e51856474ba07f701d79",
   measurementId: "G-WB3VPNT4EK"
